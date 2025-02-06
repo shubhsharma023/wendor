@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  # Backend Service (NestJS)
+  backend:
+    build:
+      context: ./server  # Path to the backend folder
+    ports:
+      - "3000:3000"     # Expose backend on port 3000
+    volumes:
+      - ./server:/app    # Mount backend code into container
+    environment:
+      - NODE_ENV=production
+    depends_on:
+      - db  # If you have a database, you can add that here
+
+  # Frontend Service (React/Vite)
+  frontend:
+    build:
+      context: ./client  # Path to the frontend folder
+    ports:
+      - "5173:5173"     # Expose frontend on port 5173
+    volumes:
+      - ./client:/app    # Mount frontend code into container
+    environment:
+      - VITE_API_URL=http://backend:3000  # Set backend API URL for frontend
+    depends_on:
+      - backend  # Make sure the backend is up before frontend
+
+  # (Optional) Database service (e.g., PostgreSQL or MySQL)
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: appdb
+    ports:
+      - "5432:5432"
