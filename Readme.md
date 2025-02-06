@@ -53,8 +53,4 @@ This `Makefile` provides a set of commands to manage your Dockerized frontend, b
 - Starts both frontend and backend services with a single command.
 - Equivalent to running `docker-compose up -d frontend backend`.
 
-## Usage Example
 
-1. **To start both frontend and backend**:
-   ```bash
-   make start
