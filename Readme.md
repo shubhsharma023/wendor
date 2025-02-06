@@ -1,42 +1,21 @@
-# Makefile Commands
+# Urban Company Booking System
 
-This Makefile is used to build, run, and manage Docker containers for both the frontend and backend services. Below is a list of available commands:
+This repository contains a full-stack application for managing bookings with carpenters. It includes a **React.js frontend** and a **NestJS backend**, all containerized using **Docker** and orchestrated with **Docker Compose**.
 
-## Commands:
+## Project Structure
 
-### `make all`
-- **Description:** Builds and runs the frontend and backend Docker containers.
-- **Usage:** `make all`
+The project is organized into two main directories:
 
-### `make build`
-- **Description:** Builds the Docker images for both the frontend and backend.
-- **Usage:** `make build`
+- **client**: Contains the React.js frontend.
+- **server**: Contains the NestJS backend.
 
-### `make up`
-- **Description:** Starts the frontend and backend Docker containers in detached mode.
-- **Usage:** `make up`
+Additionally, **Docker Compose** is used to manage the environment, and a `Makefile` is included for easy management of Docker commands.
 
-### `make logs`
-- **Description:** Shows the logs for both the frontend and backend services.
-- **Usage:** `make logs`
+## Prerequisites
 
-### `make down`
-- **Description:** Stops and removes the frontend and backend containers.
-- **Usage:** `make down`
+To get started, make sure you have the following tools installed on your system:
 
-### `make restart`
-- **Description:** Stops, removes, rebuilds, and restarts the frontend and backend containers.
-- **Usage:** `make restart`
+- **Docker**: Required for containerizing the frontend and backend.
+- **Docker Compose**: To manage multi-container Docker applications.
+- **Make**: A build automation tool for managing commands.
 
-### `make clean`
-- **Description:** Cleans up Docker containers, networks, and volumes.
-- **Usage:** `make clean`
-
----
-
-## Usage Example:
-
-To start the application, use the following command:
-
-```bash
-make all

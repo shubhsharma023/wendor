@@ -1,49 +1,29 @@
-# Define variables for Docker image names and container names
-BACKEND_IMAGE=backend-image
-FRONTEND_IMAGE=frontend-image
-NETWORK_NAME=app-network
+# Makefile to run both backend and frontend in Docker
 
-# Default target to build and run the application
-.PHONY: all
-all: build up
-
-# Build the backend and frontend Docker images
-.PHONY: build
-build:
-	@echo "Building Backend Docker image..."
-	docker-compose build backend
-	@echo "Building Frontend Docker image..."
-	docker-compose build frontend
-
-# Bring up the application using Docker Compose
-.PHONY: up
+# Docker Compose command to bring up the services
 up:
-	@echo "Starting up the containers..."
-	docker-compose up -d
+	@docker-compose up -d
 
-# View logs for backend and frontend
-.PHONY: logs
-logs:
-	@echo "Viewing Backend Logs..."
-	docker-compose logs backend
-	@echo "Viewing Frontend Logs..."
-	docker-compose logs frontend
+# Build the services
+build:
+	@docker-compose build
 
-# Stop the application
-.PHONY: down
+# Stop and remove all running services
 down:
-	@echo "Stopping and removing the containers..."
-	docker-compose down
+	@docker-compose down
 
-# Rebuild the Docker images and start the containers
-.PHONY: restart
-restart:
-	@echo "Restarting Backend and Frontend..."
-	docker-compose down
-	docker-compose up --build -d
+# View the logs of the services
+logs:
+	@docker-compose logs -f
 
-# Clean up all containers and volumes
-.PHONY: clean
+# Restart all services
+restart: down up
+
+# Clean up the environment (stop, remove containers, networks, images)
 clean:
-	@echo "Cleaning up Docker containers, networks, and volumes..."
-	docker-compose down --volumes --remove-orphans
+	@docker-compose down --volumes --rmi all
+
+# Run frontend and backend with a single command
+start:
+	@docker-compose up -d frontend backend
+
