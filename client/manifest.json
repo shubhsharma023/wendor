@@ -1,0 +1,27 @@
+{
+    "manifest_version": 3,
+    "name": "Urban Company Booking System",
+    "version": "1.0",
+    "description": "A booking system for Urban Company",
+    "background": {
+      "service_worker": "background.js"
+    },
+    "permissions": ["storage"],
+    "content_scripts": [
+      {
+        "matches": ["http://localhost:*", "https://localhost:*"],
+        "js": ["contentScript.js"]
+      }
+    ],
+    "host_permissions": [
+      "http://localhost:*",
+      "https://localhost:*"
+    ],
+    "web_accessible_resources": [
+      {
+        "resources": ["*"],
+        "matches": ["<all_urls>"]
+      }
+    ]
+  }
+  
