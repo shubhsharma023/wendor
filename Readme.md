@@ -19,10 +19,7 @@ To get started, make sure you have the following tools installed on your system:
 - **Docker Compose**: To manage multi-container Docker applications.
 - **Make**: A build automation tool for managing commands.
 
-<<<<<<< HEAD
-=======
+
 ### `make clean`
 - **Description:** Cleans up Docker containers, networks, and volumes.
 - **Usage:** `make clean`
-
->>>>>>> 9419cbba7ff62c91d6a0be84a4c40488f0517eb0
