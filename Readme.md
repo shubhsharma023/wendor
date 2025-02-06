@@ -32,11 +32,3 @@ This Makefile is used to build, run, and manage Docker containers for both the f
 - **Description:** Cleans up Docker containers, networks, and volumes.
 - **Usage:** `make clean`
 
----
-
-## Usage Example:
-
-To start the application, use the following command:
-
-```bash
-make all
